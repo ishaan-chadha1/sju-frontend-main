@@ -1,30 +1,37 @@
-
-import { Col, Image, Row, Table } from 'react-bootstrap';
-import './CreateContract.css';
+import { Col, Image, Row, Table, Modal, Button, Card, CardGroup, Tabs, Tab, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
-
+import './CreateContract.css';
 import FileUpload from '../../component/FileUpload/FileUpload';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import WizardForm from './WizardForm';
 
 const CreateContract = () => {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
+    const [showInviteModal, setShowInviteModal] = useState(false);
+    const [inviteDetails, setInviteDetails] = useState({ name: '', email: '' });
+    const [invitedSigners, setInvitedSigners] = useState([]);
 
     const handleClose = () => setShow(false);
     const handleClose2 = () => setShow2(false);
     const handleClose3 = () => setShow3(false);
+    const handleCloseInviteModal = () => setShowInviteModal(false);
     const handleShow = () => setShow(true);
     const handleShow2 = () => setShow2(true);
     const handleShow3 = () => setShow3(true);
+    const handleShowInviteModal = () => setShowInviteModal(true);
+
+    const handleInviteChange = (e) => {
+        const { name, value } = e.target;
+        setInviteDetails({ ...inviteDetails, [name]: value });
+    };
+
+    const handleInviteSubmit = () => {
+        setInvitedSigners([...invitedSigners, inviteDetails]);
+        setInviteDetails({ name: '', email: '' });
+        handleCloseInviteModal();
+    };
     return (
         <div className='main-content mt-5'>
             <div className="managecontract">
@@ -116,26 +123,71 @@ const CreateContract = () => {
                             <div className='invite'>
                                 <h2>Invite Signers</h2>
                                 <p>Invite signers by email addresses, Telegram Handles, or wallet addresses.</p>
+                                <Button variant="primary" onClick={handleShowInviteModal}>
+                                  Invite Signer
+                                </Button>
                             </div>
 
                             <Table className="folders-table-1" responsive>
-                                <tr className="table-heading">
-                                    <th>Name</th>
-                                    <th>Email Address</th>
-                                    <th>Telegram</th>
-                                    <th>Wallet Address</th>
-                                    <th>Action</th>
-                                </tr>
-                                <tr>
-                                    <td className='center'>mfaraz568</td>
-                                    <td className='center'>mfaraz568@gmail.com</td>
-                                    <td className='center'>Add telegram handle</td>
-                                    <td className='center'>Add wallet address</td>
-                                    <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
-                                </tr>
+                                <thead>
+                                    <tr className="table-heading">
+                                        <th>Name</th>
+                                        <th>Email Address</th>
+                                        <th>Telegram</th>
+                                        <th>Wallet Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {invitedSigners.map((signer, index) => (
+                                        <tr key={index}>
+                                            <td className='center'>{signer.name}</td>
+                                            <td className='center'>{signer.email}</td>
+                                            <td className='center'>Add telegram handle</td>
+                                            <td className='center'>Add wallet address</td>
+                                            <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
                             </Table>
 
-
+                            <Modal show={showInviteModal} onHide={handleCloseInviteModal}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Invite Signer</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Form>
+                                        <Form.Group controlId="inviteName">
+                                            <Form.Label>Name</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="name"
+                                                value={inviteDetails.name}
+                                                onChange={handleInviteChange}
+                                                placeholder="Enter signer's name"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group controlId="inviteEmail">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="email"
+                                                value={inviteDetails.email}
+                                                onChange={handleInviteChange}
+                                                placeholder="Enter signer's email"
+                                            />
+                                        </Form.Group>
+                                    </Form>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={handleCloseInviteModal}>
+                                        Close
+                                    </Button>
+                                    <Button variant="primary" onClick={handleInviteSubmit}>
+                                        Add Signer
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
                         </Tab>
                         <Tab eventKey="contact" title="Add Fields">
                             <div className="selectfilter mt-3">
