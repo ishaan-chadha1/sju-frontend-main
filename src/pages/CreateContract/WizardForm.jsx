@@ -120,7 +120,7 @@ const WizardForm = () => {
                                     </div>
                                 </div>
                             </Col>
-                            <Col lg={6}>
+                            {/* <Col lg={6}>
                                 <div className="h-100 contsetting">
                                     <div className='contract-heading'>
                                         <h2>Sender's Message</h2>
@@ -133,7 +133,7 @@ const WizardForm = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </Col>
+                            </Col> */}
                         </Row>
 
 
