@@ -1,0 +1,41 @@
+.text-black {
+    font-size: 20px;
+    line-height: 30px;
+    color: #002244;
+    margin-bottom: 12px !important;
+    font-weight: 600;
+}
+
+img.ml-auto {
+    margin-left: auto;
+}
+
+.file-inner p {
+    position: absolute;
+    bottom: -47px;
+    padding: 10px;
+    background: whitesmoke;
+    border-radius: 10px;
+    left: 20px;
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.file-inner {
+    position: relative;
+}
+
+.file-inner h2:hover+p {
+    opacity: 1;
+}
+
+.viewcontract ul {
+    display: flex;
+    background: none;
+    top: 0 !important;
+    padding: 0 !important;
+    justify-content: flex-end;
+    position: relative;
+    width: 0;
+    overflow: hidden;
+}

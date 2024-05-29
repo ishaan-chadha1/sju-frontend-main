@@ -1,0 +1,178 @@
+ul.upload li {
+    width: auto !important;
+}
+
+ul.upload {
+    margin: 0;
+}
+
+ul.upload.bsync {
+    width: 100%;
+}
+
+ul.upload.bsync li {
+    width: 33% !important;
+}
+
+.box-content input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.viewcontract input:checked+img+ul.tabledropdown.trashfile.bsyncfile {
+    height: 145px !important;
+}
+
+.box-content {
+    position: relative;
+}
+
+ul.upload.bsync h2 {
+    line-height: 29px;
+}
+
+.upload-section.bsync-section h2 {
+    color: #002244;
+    font-size: 20px;
+}
+
+.mt-5.mb-5.row {
+    display: flex;
+    align-items: flex-end;
+}
+
+.bsync-section .folder-add {
+    align-items: flex-end;
+}
+
+.table-file h2 {
+    max-width: 100%;
+}
+
+/* 
+button.btn.btn-primary {
+    background: none;
+    border: none;
+    padding: 0;
+} */
+.add-button button {
+    background: transparent;
+    padding: 0;
+}
+
+.by-model .modal-content {
+    background-color: black !important;
+    height: 600px;
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.popup-title img {
+    width: 50px;
+}
+
+.popup-title h2 {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 400;
+}
+
+.by-model svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+    background: none !important;
+}
+
+.flex-nowrap {
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.popup-content.flex-nowrap input {
+    background-color: transparent;
+    color: #000;
+    height: 50px;
+}
+td,th {
+    font-family: 'outfit';
+}
+.popup-content.flex-nowrap {
+    display: block !important;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.flex input#check-api-checkbox {
+    width: 24px;
+    height: 24px;
+    background-color: #23231e;
+    border: 1px solid #fff;
+}
+
+.valid-feedback {
+    font-size: 21px;
+    color: #EEEEED;
+    font-weight: 200;
+    line-height: 28px;
+}
+
+.automation-bg {
+      background-color: transparent;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.automation h6 {
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.automation {
+    margin-top: 30px;
+}
+
+.border.modal-header {
+    border-bottom: 1px solid #30302F !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+}
+
+.cancle-create-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 70px;
+    gap: 12px;
+}
+
+.cancle-create-btn button.btn.btn-primary {
+    background-color: #2D2D2D;
+    padding: 12px 24px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 300;
+}
+
+button.color-blue.btn.btn-primary {
+    background-color: #2F7FFD;
+}
+
+ul.tabledropdown.trashfile.bsyncfile {
+    right: 0;
+    left: auto !important;
+}

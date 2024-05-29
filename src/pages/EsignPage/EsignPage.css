@@ -1,0 +1,315 @@
+.contractname h4 {
+    font-size: 20px;
+    color: #002244;
+    margin-bottom: 10px;
+}
+
+.contractname p {
+    font-size: 16px;
+    color: rgb(0 34 68 / 60%);
+}
+
+.managecontract .esignbtn {
+    width: 242px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2184E5;
+    color: white;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.managecontract a img {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.managecontract {
+    display: flex;
+    align-items: center;
+}
+
+.notice {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #F2F9FF;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.notice img {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.notice p {
+    font-size: 16px;
+    color: #002244;
+    letter-spacing: 1px;
+}
+
+.notice {
+    border: 1px solid #0022444a;
+}
+
+.form-submit {
+    padding: 13px 30px;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+}
+
+.kb-data-box {
+    width: 100%;
+    flex: 1;
+}
+
+.kb-modal-data-title {
+    margin-bottom: 10px;
+}
+
+.kb-data-title h6 {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.kb-file-upload {
+    margin-bottom: 20px;
+}
+
+.file-upload-box {
+    border: 1px dashed #b6bed1;
+    background-color: #f0f2f7;
+    border-radius: 4px;
+    min-height: 150px;
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8194aa;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.file-upload-box .file-upload-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-link {
+    color: #475f7b;
+    text-decoration: underline;
+    margin-left: 3px;
+}
+
+.file-upload-box .file-link:hover {
+    text-decoration: none;
+}
+
+.file-atc-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.file-image {
+    /* width: 130px;
+    min-width: 130px;
+    height: 85px;
+    min-height: 85px; */
+    width: 85px;
+    height: 85px;
+    background-size: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+    background-color: #eaecf1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #475f7b;
+    padding: 3px;
+}
+
+.file-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+}
+
+.file-detail {
+    flex: 1;
+    width: calc(100% - 210px);
+}
+
+.file-detail h6 {
+    word-break: break-all;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+.file-detail p {
+    font-size: 12px;
+    color: #8194aa;
+    line-height: initial;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.file-actions {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.file-action-btn {
+    font-size: 12px;
+    color: #8194aa;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.file-action-btn:hover {
+    color: #3d546f;
+    text-decoration: underline;
+}
+
+.file-atc-box:last-child {
+    margin-bottom: 0;
+}
+
+.file-upload-box {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+}
+
+.file-upload-box h4 {
+    font-size: 20px;
+    color: #002244;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.file-upload-box p {
+    font-size: 16px;
+    color: #00224463;
+}
+
+button.btn.btn-primary.form-submit img {
+    margin: 0;
+}
+
+button.btn.btn-primary.form-submit {
+    display: flex;
+    flex-direction: row;
+}
+
+ul.mb-3.nav.nav-tabs.nav-fill {
+    padding-top: 60px;
+}
+
+.kb-buttons-box button {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2184E5;
+    color: white;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 12px;
+}
+
+.file-upload-box button img {
+    margin-right: 8px;
+}
+
+.kb-buttons-box a {
+    max-width: 212px;
+}
+
+.kb-buttons-box button img {
+    margin-right: 9px;
+}
+
+.fileupload-view .card.mt-5 {
+    background: transparent;
+    border-radius: 12px;
+}
+
+.fileupload-view .card-body {
+    padding: 40px 20px;
+}
+
+.file-detail h6 {
+    color: #002244;
+}
+
+.viewcontract label input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.viewcontract input:checked+img+ul {
+
+    opacity: 1;
+    /* padding: 12px !important; */
+    border: none;
+    width: 100%;
+}
+
+.viewcontract label {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.viewcontract {
+    justify-content: flex-end !important;
+}
+
+ul.tabledropdown {
+    transition: all 0.5s;
+    padding: 0px 12px;
+    border: none;
+}
+
+/* ul.tabledropdown {
+    left: 0;
+    height: 0;
+    padding: 0 12px !important;
+    overflow: hidden;
+    border: none !important;
+} */
+
+th.actionmain {
+    width: 20%;
+    text-align: right;
+}

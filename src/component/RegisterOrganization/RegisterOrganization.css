@@ -1,0 +1,83 @@
+.logo-register {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.logo-register img {
+    margin: 0;
+    width: 190px;
+    height: 50px;
+}
+
+.logo-register a {
+    border: 1px solid #000;
+    padding: 1px 18px;
+    font-size: 20px;
+    line-height: 53px;
+    color: #000;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+h2.heading {
+    text-align: center;
+    font-size: 41px;
+    line-height: 47px;
+    font-weight: 600;
+    color: #000;
+}
+
+.organisation h2 {
+    text-align: center;
+    font-size: 41px;
+    line-height: 47px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+h2.heading span {
+    color: #0060FF;
+}
+
+span.circle img {
+    width: 340px;
+    display: flex;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.organisation a {
+    color: #666666;
+    font-size: 25px;
+    font-weight: 300;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.organisation p {
+    color: #666666;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 40px !important;
+}
+
+/* .btn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} */
+
+.btn a {
+    background-color: #0060FF;
+    padding: 20px 50px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    margin: auto;
+}

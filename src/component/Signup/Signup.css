@@ -1,0 +1,106 @@
+.signup-logo img {
+    max-width: 240px;
+    margin: 100px 0 100px;
+}
+.signup-logo::after {
+    content: "";
+    position: absolute;
+    background-image: url(/public/Images/signupbox1.png);
+    left: 262px;
+    top: -30px;
+    width: 188px;
+    height: 196px;
+}
+.signup-logo {
+    position: relative;
+}
+
+.signup-logo img {
+    max-width: 300px;
+    padding-top: 40px;
+}
+.welcome img {
+    max-width: 340px;
+}
+
+.welcome p {
+    font-size: 22px;
+    color: #000;
+    max-width: 323px;
+    margin: auto;
+    margin-top: 20px;
+    line-height: 32px;
+}
+
+.welcome p span {
+    color: #0386D0;
+}
+.email-btn {
+    padding: 14px 171px;
+    background-color: #B9D5F0;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 12px;
+    font-size: 30px;
+    margin-top: 80px;
+    line-height: 50px;
+}
+
+.email-btn a {
+    color: #fff;
+}
+.signup-logo::before {
+    content: "";
+    position: absolute;
+    background-image: url(/public/Images/signupbox1.png);
+    right: 40px;
+    bottom: -40px;
+    width: 188px;
+    height: 196px;
+}
+.email-btn:after {
+    content: "";
+    background-image: url(/public/Images/signup-circle.png);
+    width: 600px;
+    right: -102px;
+    bottom: 0;
+    position: absolute;
+    height: 950px;
+}
+.signup-bg {
+    background-color: #0060ff;
+    height: 238px;
+    padding: 30px;
+}
+.signup-bg p {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 40px;
+}
+.login-with a {
+    background-color: #82B1FF;
+    margin: 20px;
+    padding: 18px 40px;
+    border-radius: 12px;
+}
+.login-with a img {
+    margin-right: 17px;
+}
+
+.login-with a {
+    color: #fff;
+    font-size: 18px;
+    line-height: 26px;
+}
+.email-btn::before {
+    content: "";
+    background-image: url(/public/Images/signupbox2.png);
+    position: absolute;
+    left: 0;
+    bottom: 290px;
+    width: 240px;
+    height: 290px;
+}
+.sign-wel {
+    height: calc(100vh - 257px);
+}

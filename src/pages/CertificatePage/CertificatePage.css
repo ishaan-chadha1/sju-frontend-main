@@ -1,0 +1,627 @@
+.addfolder {
+    text-align: center;
+    margin-top: 190px;
+}
+
+.addfolder h3 {
+    font-size: 36px;
+    color: #002244;
+}
+
+.addfolder p {
+    font-size: 16px;
+    color: #002244bd;
+}
+
+.addfolder a {
+    width: 200px;
+    height: 44px;
+    background: #2184E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color: white;
+    border-radius: 7px;
+}
+
+.btncreatcertificate a {
+    width: 200px;
+    height: 44px;
+    background: #2184E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-right: 0;
+    color: white;
+    border-radius: 7px;
+}
+
+h5.text-certificate {
+    text-align: left;
+    color: #002244;
+    font-size: 20px;
+    margin-bottom: 23px;
+}
+
+.formdetail input {
+    border: 1px solid #0000002b;
+    height: 50px;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-size: 14px;
+}
+
+.formdetail label {
+    background: #fafafa;
+    position: relative;
+    bottom: -17px;
+    left: 17px;
+    font-size: 12px;
+    color: #002244;
+    padding: 0 8px;
+}
+
+.formdetail {
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.btncreate a {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #2184E5;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btncreate {
+    margin-top: 30px;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.certificateimg.bg-lightblue {
+    background: #F2F9FF;
+    text-align: center;
+    border-radius: 12px;
+    padding: 60px;
+    border: 1px solid #00224438;
+}
+
+.docowner {
+    display: flex;
+    align-items: center;
+}
+
+.docmain {
+    display: flex;
+}
+
+.docmain span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCF0CE;
+    border-radius: 100%;
+    font-size: 20px;
+    color: #FCB518;
+}
+
+.docname h5 {
+    font-size: 16px;
+    color: #002244;
+    font-weight: 500;
+    margin: 0;
+}
+
+.docname p {
+    color: #0022448a;
+}
+
+.docname {
+    margin-left: 8px;
+}
+
+p.rejectdoctext {
+    margin-left: auto;
+    font-size: 16px;
+    color: #000000;
+}
+
+.signdoc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.signdoc a.btnblue {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    color: white;
+    background: #2184E5;
+}
+
+.signdoc a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    width: 50%;
+    height: 50px;
+}
+
+.signdoc {
+    gap: 15px;
+}
+
+.docowner {
+    display: flex;
+    align-items: center;
+}
+
+.docmain {
+    display: flex;
+}
+
+.docmain span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCF0CE;
+    border-radius: 100%;
+    font-size: 20px;
+    color: #FCB518;
+}
+
+.docname h5 {
+    font-size: 16px;
+    color: #002244;
+    font-weight: 500;
+    margin: 0;
+}
+
+.docname p {
+    color: #0022448a;
+}
+
+.docname {
+    margin-left: 8px;
+}
+
+p.rejectdoctext {
+    margin-left: auto;
+    font-size: 16px;
+    color: #000000;
+}
+
+.signdoc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.signdoc a.btnblue {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    color: white;
+    background: #2184E5;
+}
+
+.signdoc a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    width: 50%;
+    height: 50px;
+}
+
+.signdoc {
+    gap: 15px;
+}
+
+ul.recipientbtns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #00224438;
+}
+
+ul.recipientbtns li {
+    width: 33%;
+}
+
+ul.recipientbtns li a {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #00224499;
+    border: 1px solid #00224499;
+    border-radius: 10px;
+}
+
+ul.recipientbtns li a img {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.docowner {
+    display: flex;
+    align-items: center;
+}
+
+.docmain {
+    display: flex;
+}
+
+.docmain span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCF0CE;
+    border-radius: 100%;
+    font-size: 20px;
+    color: #FCB518;
+}
+
+.docname h5 {
+    font-size: 16px;
+    color: #002244;
+    font-weight: 500;
+    margin: 0;
+}
+
+.docname p {
+    color: #0022448a;
+}
+
+.docname {
+    margin-left: 8px;
+}
+
+p.rejectdoctext {
+    margin-left: auto;
+    font-size: 16px;
+    color: #000000;
+}
+
+.signdoc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.signdoc a.btnblue {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    color: white;
+    background: #2184E5;
+}
+
+.signdoc a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2184E5;
+    border-radius: 12px;
+    width: 50%;
+    height: 50px;
+}
+
+.signdoc {
+    gap: 15px;
+}
+
+ul.recipientbtns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #00224438;
+}
+
+ul.recipientbtns li {
+    width: 33%;
+}
+
+ul.recipientbtns li a {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #00224499;
+    border: 1px solid #00224499;
+    border-radius: 10px;
+}
+
+ul.recipientbtns li a img {
+    margin: 0;
+    margin-right: 10px;
+}
+
+a.explore {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: black;
+    margin-top: 20px;
+}
+
+a.explore img {
+    margin: 0;
+    margin-left: 8px;
+}
+
+.docmain.statusdoc img {
+    margin-right: 30px !important;
+}
+
+img.m-0.ml-2 {
+    margin-left: 18px !important;
+}
+
+.docmain.statusdoc {
+    margin-bottom: 50px;
+}
+
+.docmain.statusdoc.mt-5.mb-0 {
+    margin-top: 50px !important;
+}
+
+.stautstitle h5 {
+    font-size: 20px;
+    color: #002244;
+    margin-bottom: 16px !important;
+    font-weight: 500;
+}
+
+.docdetailmain {
+    display: flex;
+    align-items: flex-start;
+}
+
+.docdetailmain img {
+    margin: 0;
+    margin-right: 11px;
+}
+
+table.folders-table-1 h4 {
+    font-size: 14px;
+    color: #002244;
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+table.folders-table-1 p {
+    font-size: 14px;
+    color: #002244;
+    text-align: left;
+    color: #0022447a;
+}
+
+.viewcontract {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewcontract h4 {
+    margin: 0 !important;
+}
+
+.viewcontract img {
+    margin: 0;
+    margin-left: 10px;
+}
+
+ul.tabledropdown {
+    text-align: left;
+}
+
+ul.tabledropdown {
+    border-radius: 10px;
+    padding: 12px;
+    position: relative;
+    top: 34px;
+    /* width: 190px; */
+    z-index: 99;
+}
+
+ul.tabledropdown a {
+    font-size: 20px;
+    color: #002244;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+}
+
+.viewcontract {
+    position: relative;
+}
+
+
+
+ul.mb-3.recipientbtns.nav.nav-tabs li button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #00224499;
+    border: 1px solid #00224499;
+    border-radius: 10px;
+}
+
+ul.mb-3.recipientbtns.nav.nav-tabs li button.active {
+    background: #2184e5;
+    color: #fff;
+    border-color: #2184e5;
+    stroke: #fff !important;
+}
+
+ul.mb-3.recipientbtns.nav.nav-tabs li button.active svg path {
+    stroke: white;
+}
+
+ul.mb-3.recipientbtns.nav.nav-tabs {
+    flex-wrap: nowrap;
+    border-bottom: none;
+}
+
+span.image svg {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+.certificate-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.certificate-heading h3 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 4px;
+    color: #002244;
+    font-weight: 500;
+}
+
+.certificate-heading p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #64798D;
+}
+
+.setting {
+    background-color: #F2F9FF;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    border: 1px solid #D3DDE7;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-img {
+    background-color: #F2F9FF;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    border: 1px solid #D3DDE7;
+}
+
+.edit h4 {
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    font-weight: 500;
+}
+
+.certificate-box {
+    background-color: #F2F9FF;
+    border: 1px solid #D3DDE7;
+    border-radius: 12px;
+    padding: 20px 0 20px 20px;
+    margin-bottom: 20px;
+}
+
+.certificate-box h5 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+    color: #002244;
+    font-weight: 500;
+}
+
+.certificate-box p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #61788F;
+    font-weight: 400;
+}
+
+.align-items-center.row {
+    margin-top: 11px;
+}
+
+.certificate-ending h3 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 4px;
+    color: #002244;
+    font-weight: 500;
+}
+
+.certificate-ending p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #64798D;
+}
+
+.certificate-ending {
+    margin-top: 20px;
+}
