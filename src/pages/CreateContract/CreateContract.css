@@ -6,7 +6,9 @@
     flex-wrap: wrap;
     width: 100%;
 }
-
+.expiration-info{
+    color: black;
+}
 .contractname.d-flex ul.mb-3.nav.nav-tabs {
     margin-left: auto;
 }

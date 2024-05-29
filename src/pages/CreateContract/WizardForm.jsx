@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, Table } from "react-bootstrap";
-import { Col, Image, Row } from 'react-bootstrap';
+import { Button, Form, Table, Col, Image, Row } from "react-bootstrap";
 import './CreateContract.css';
 
-
-const WizardForm = () => {
+const WizardForm = ({ invitedSigners }) => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
         firstName: "",
@@ -35,38 +33,70 @@ const WizardForm = () => {
         console.log(formData);
     };
 
+    const handleReviewAndSend = () => {
+        // Create a FormData object
+        const data = new FormData();
+        // Append the necessary fields
+        data.append('contractName', 'Activity 1 - Googles');
+        data.append('creationDate', '2024-01-21 13:46:19 +0530');
+        data.append('documentKey', 'Es-FaCWab8svFN0LK4uRQs9u');
+        data.append('signers', JSON.stringify(invitedSigners));
+        // If you need to upload a file, uncomment the next line and ensure you have a file reference
+        // data.append('file', yourFileReference);
+
+        // Send a POST request to the backend
+        console.log(data);  
+        fetch('YOUR_BACKEND_API_URL', {
+            method: 'POST',
+            body: data,
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
     return (
         <div className="">
             <Form onSubmit={handleSubmit}>
                 {step === 1 && (
-                    <div >
+                    <div>
                         <div className='invite'>
                             <h2>Contract Recipients</h2>
                             <p>Review your signers and viewers</p>
                         </div>
 
                         <Table className="folders-table-1" responsive>
-                            <tr className="table-heading">
-                                <th>Name</th>
-                                <th>Email Address</th>
-                                <th>Telegram</th>
-                                <th>Wallet Address</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                <td className='center'>mfaraz568</td>
-                                <td className='center'>mfaraz568@gmail.com</td>
-                                <td className='center'>Add telegram handle</td>
-                                <td className='center'>Add wallet address</td>
-                                <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
-                            </tr>
+                            <thead>
+                                <tr className="table-heading">
+                                    <th>Name</th>
+                                    <th>Email Address</th>
+                                    <th>Telegram</th>
+                                    <th>Wallet Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {invitedSigners.map((signer, index) => (
+                                    <tr key={index}>
+                                        <td className='center'>{signer.name}</td>
+                                        <td className='center'>{signer.email}</td>
+                                        <td className='center'>Add telegram handle</td>
+                                        <td className='center'>Add wallet address</td>
+                                        <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </Table>
                         <Row className='contract-tables mt-5'>
                             <Col lg={6}>
                                 <div className="h-100 contsetting">
                                     <div className='contract-heading'>
                                         <h2>Contract Settings</h2>
-                                        <p>Once Submitted, these settiings cannot be changed</p>
+                                        <p>Once Submitted, these settings cannot be changed</p>
                                     </div>
                                     <div className='contract-info'>
                                         <div className='contract-name'>
@@ -77,16 +107,16 @@ const WizardForm = () => {
                                         <div className='contract-encryption'>
                                             <div className='contract-flex'>
                                                 <div className='encryption-info'>
-                                                    <h2>Contract Encryption ?</h2>
-                                                    <p>All recipients need this password to decrypt and viwq the contract</p>
+                                                    <h2>Contract Encryption?</h2>
+                                                    <p>All recipients need this password to decrypt and view the contract</p>
                                                 </div>
                                                 <div className='switch'>
-                                                    <div class="toggle-button-cover">
-                                                        <div class="button-cover">
-                                                            <div class="button r" id="button-1">
-                                                                <input type="checkbox" class="checkbox" />
-                                                                <div class="knobs"></div>
-                                                                <div class="layer"></div>
+                                                    <div className="toggle-button-cover">
+                                                        <div className="button-cover">
+                                                            <div className="button r" id="button-1">
+                                                                <input type="checkbox" className="checkbox" />
+                                                                <div className="knobs"></div>
+                                                                <div className="layer"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -97,57 +127,41 @@ const WizardForm = () => {
                                                 <span><Image src='Images/homepage/eyeicon.svg' /></span>
                                             </div>
                                         </div>
-                                        <div className='contract-expirstion'>
+                                        <div className='contract-encryption'>
                                             <div className='contract-flex'>
-                                                <div className='expirstion-info'>
-                                                    <h2>Set Contract Expirstion</h2>
-                                                    <p>The contract becomes read -only after this date</p>
+                                                <div className='encryption-info'>
+                                                    <h2>Contract Expiration?</h2>
+                                                    <p>All recipients can only access this contract on or before :</p>
                                                 </div>
                                                 <div className='switch'>
-                                                    <div class="toggle-button-cover">
-                                                        <div class="button-cover">
-                                                            <div class="button r" id="button-1">
-                                                                <input type="checkbox" class="checkbox" />
-                                                                <div class="knobs"></div>
-                                                                <div class="layer"></div>
+                                                    <div className="toggle-button-cover">
+                                                        <div className="button-cover">
+                                                            <div className="button r" id="button-1">
+                                                                <input type="checkbox" className="checkbox" />
+                                                                <div className="knobs"></div>
+                                                                <div className="layer"></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>  
                                             <input type="date" placeholder='DD/MM/YY HH:MM:SS' className='activity'></input>
                                         </div>
                                     </div>
                                 </div>
                             </Col>
-                            {/* <Col lg={6}>
-                                <div className="h-100 contsetting">
-                                    <div className='contract-heading'>
-                                        <h2>Sender's Message</h2>
-                                        <p>Send customized message to contract recipients. this message will not be stored anywhere or encrypted.</p>
-                                    </div>
-                                    <div className='message-info'>
-                                        <div className='textarea'>
-                                            <textarea type="text" placeholder='You can use this field as a password hint, “thie password is the time we first met”,' className='message'></textarea>
-                                            <p>Character remaining : 1000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col> */}
                         </Row>
-
-
                     </div>
                 )}
 
                 {step === 2 && (
-                    <div >
+                    <div>
                         <Row className='contract-tables mt-5'>
                             <Col lg={6}>
                                 <div className="h-100 contsetting">
                                     <div className='contract-heading'>
                                         <h2>Contract Settings</h2>
-                                        <p>Once Submitted, these settiings cannot be changed</p>
+                                        <p>Once Submitted, these settings cannot be changed</p>
                                     </div>
                                     <div className='contract-info'>
                                         <div className='contract-name'>
@@ -158,16 +172,16 @@ const WizardForm = () => {
                                         <div className='contract-encryption'>
                                             <div className='contract-flex'>
                                                 <div className='encryption-info'>
-                                                    <h2>Contract Encryption ?</h2>
-                                                    <p>All recipients need this password to decrypt and viwq the contract</p>
+                                                    <h2>Contract Encryption?</h2>
+                                                    <p>All recipients need this password to decrypt and view the contract</p>
                                                 </div>
                                                 <div className='switch'>
-                                                    <div class="toggle-button-cover">
-                                                        <div class="button-cover">
-                                                            <div class="button r" id="button-1">
-                                                                <input type="checkbox" class="checkbox" />
-                                                                <div class="knobs"></div>
-                                                                <div class="layer"></div>
+                                                    <div className="toggle-button-cover">
+                                                        <div className="button-cover">
+                                                            <div className="button r" id="button-1">
+                                                                <input type="checkbox" className="checkbox" />
+                                                                <div className="knobs"></div>
+                                                                <div className="layer"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,22 +199,22 @@ const WizardForm = () => {
                                 <div className="h-100 contsetting">
                                     <div className='contract-heading'>
                                         <h2>Contract Settings</h2>
-                                        <p>Once Submitted, these settiings cannot be changed</p>
+                                        <p>Once Submitted, these settings cannot be changed</p>
                                     </div>
                                     <div className='contract-info'>
-                                        <div className='contract-expirstion'>
+                                        <div className='contract-encryption'>
                                             <div className='contract-flex'>
-                                                <div className='expirstion-info'>
-                                                    <h2>Set Contract Expirstion</h2>
-                                                    <p>The contract becomes read -only after this date</p>
+                                                <div className='encryption-info'>
+                                                    <h2>Set Contract Expiration</h2>
+                                                    <p>The contract becomes read-only after this date</p>
                                                 </div>
                                                 <div className='switch'>
-                                                    <div class="toggle-button-cover">
-                                                        <div class="button-cover">
-                                                            <div class="button r" id="button-1">
-                                                                <input type="checkbox" class="checkbox" />
-                                                                <div class="knobs"></div>
-                                                                <div class="layer"></div>
+                                                    <div className="toggle-button-cover">
+                                                        <div className="button-cover">
+                                                            <div className="button r" id="button-1">
+                                                                <input type="checkbox" className="checkbox" />
+                                                                <div className="knobs"></div>
+                                                                <div className="layer"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -213,13 +227,11 @@ const WizardForm = () => {
                                 </div>
                             </Col>
                         </Row>
-
                     </div>
                 )}
                 {step === 3 && (
-                    <div >
+                    <div>
                         <div className="selectfilter mt-3 mb-4">
-
                             <div className="search">
                                 <span><Image src='Images/search.svg' /></span>
                                 <input type="search" placeholder='Search Document' />
@@ -241,7 +253,7 @@ const WizardForm = () => {
                                         <h6>Document Key :</h6>
                                         <span>Es-FaCWab8svFN0LK4uRQs9u</span>
                                     </div>
-                                    <div className="contactname  border-top-1">
+                                    <div className="contactname border-top-1">
                                         <h6>Signing Activity</h6>
                                         <div className="activename">
                                             <span>
@@ -261,7 +273,9 @@ const WizardForm = () => {
                                     <div className="contactname text-center pb-4">
                                         <Image src='Images/esign/notice.png' />
                                     </div>
-
+                                    <Button variant="primary" onClick={handleReviewAndSend}>
+                                        Review and Send
+                                    </Button>
                                 </div>
                             </Col>
                         </Row>
@@ -269,7 +283,6 @@ const WizardForm = () => {
                 )}
 
                 <div className='back-next mt-3 w-100'>
-
                     {step > 1 && (
                         <Button onClick={handlePrev} className='backbtn'>
                             <Image src='Images/esign/backicon.svg' />  Back

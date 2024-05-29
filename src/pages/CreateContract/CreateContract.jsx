@@ -48,83 +48,13 @@ const CreateContract = () => {
                                 <p>Upload a document that you wish to send.</p>
                             </div>
                             <FileUpload />
-
-                            {/* <div className="selecttemplete">
-                                <div className="selectfilter">
-                                    <h4>Select From Template</h4>
-                                    <select id="FilterSelect">
-                                        <option value="all">All</option>
-                                        <option value=".category-1">Category 1</option>
-                                        <option value=".category-2">Category 2</option>
-                                    </select>
-                                </div>
-                                <CardGroup>
-                                    <Card>
-                                        <div className="cardimg">
-                                            <Card.Img variant="top" src="Images/esign/invoice.png" />
-                                        </div>
-                                        <Card.Body>
-
-                                            <Card.Text>
-                                                <span>Business Transaction</span>
-                                                <Link variant="primary" onClick={handleShow}>Inovice<Image src='Images/esign/invoiceicon.svg' /></Link>
-                                                <p>Jurisdiction : <span>Worldwide</span></p>
-                                            </Card.Text>
-                                        </Card.Body>
-
-                                    </Card>
-                                    <Card>
-                                        <div className="cardimg">
-                                            <Card.Img variant="top" src="Images/esign/invoice.png" />
-                                        </div>
-                                        <Card.Body>
-
-                                            <Card.Text>
-                                                <span>Business Operations</span>
-                                                <Link variant="primary" onClick={handleShow2}>Partnership Agreement<Image src='Images/esign/invoiceicon.svg' /></Link>
-                                                <p>Jurisdiction : <span>Worldwide</span></p>
-                                            </Card.Text>
-                                        </Card.Body>
-
-                                    </Card>
-                                    <Card>
-                                        <div className="cardimg">
-                                            <Card.Img variant="top" src="Images/esign/invoice.png" />
-                                        </div>
-                                        <Card.Body>
-
-                                            <Card.Text>
-                                                <span>Intellectual Property</span>
-                                                <Link variant="primary" onClick={handleShow3}>Non-Disclosure Agreement<Image src='Images/esign/invoiceicon.svg' /></Link>
-                                                <p>Jurisdiction : <span>Worldwide</span></p>
-                                            </Card.Text>
-                                        </Card.Body>
-
-                                    </Card>
-                                    <Card>
-                                        <div className="cardimg">
-                                            <Card.Img variant="top" src="Images/esign/invoice.png" />
-                                        </div>
-                                        <Card.Body>
-
-                                            <Card.Text>
-                                                <span>Employment</span>
-                                                <Link to="/">Employment Contract<Image src='Images/esign/invoiceicon.svg' /></Link>
-                                                <p>Jurisdiction : <span>Worldwide</span></p>
-                                            </Card.Text>
-                                        </Card.Body>
-
-                                    </Card>
-                                </CardGroup>
-                            </div> */}
-
                         </Tab>
                         <Tab eventKey="profile" title="Invite Signers">
                             <div className='invite'>
                                 <h2>Invite Signers</h2>
                                 <p>Invite signers by email addresses, Telegram Handles, or wallet addresses.</p>
                                 <Button variant="primary" onClick={handleShowInviteModal}>
-                                  Invite Signer
+                                    Invite Signer
                                 </Button>
                             </div>
 
@@ -212,53 +142,43 @@ const CreateContract = () => {
                                         <p>Signature Field</p>
                                     </div>
                                 </li>
-
                                 <li>
                                     <div className="assignfieldsub">
-
                                         <Image src='Images/esign/date.svg' />
                                         <p>Date Signed</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="assignfieldsub">
-
                                         <Image src='Images/esign/input.svg' />
                                         <p>Input Text Field</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="assignfieldsub">
-
                                         <Image src='Images/esign/readonly.svg' />
                                         <p>Read Only Text</p>
                                     </div>
                                 </li>
                             </ul>
 
-                            {/* <div className="activity mt-5">
-                                <h4 className='mb-5'> Activity 1 - Googles</h4>
-                                <Image src='Images/esign/activity.png' className='m-auto' />
-                            </div> */}
                             <div className="h-100 contsetting">
-                                    <div className='contract-heading'>
-                                        <h2>Sender's Message</h2>
-                                        <p>Send customized message to contract recipients. this message will not be stored anywhere or encrypted.</p>
-                                    </div>
-                                    <div className='message-info'>
-                                        <div className='textarea'>
-                                            <textarea type="text" placeholder='You can use this field as a password hint, “thie password is the time we first met”,' className='message'></textarea>
-                                            <p>Character remaining : 1000</p>
-                                        </div>
+                                <div className='contract-heading'>
+                                    <h2>Sender's Message</h2>
+                                    <p>Send customized message to contract recipients. this message will not be stored anywhere or encrypted.</p>
+                                </div>
+                                <div className='message-info'>
+                                    <div className='textarea'>
+                                        <textarea type="text" placeholder='You can use this field as a password hint, “the password is the time we first met”' className='message'></textarea>
+                                        <p>Character remaining: 1000</p>
                                     </div>
                                 </div>
+                            </div>
                         </Tab>
                         <Tab eventKey="review" title="Review and Send">
                             <div className=" mt-3 mb-4">
-
-                                <WizardForm />
+                                <WizardForm invitedSigners={invitedSigners} />
                             </div>
-
                         </Tab>
                     </Tabs>
 
