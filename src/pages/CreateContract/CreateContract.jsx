@@ -42,7 +42,7 @@ const CreateContract = () => {
                             </div>
                             <FileUpload />
 
-                            <div className="selecttemplete">
+                            {/* <div className="selecttemplete">
                                 <div className="selectfilter">
                                     <h4>Select From Template</h4>
                                     <select id="FilterSelect">
@@ -109,7 +109,7 @@ const CreateContract = () => {
 
                                     </Card>
                                 </CardGroup>
-                            </div>
+                            </div> */}
 
                         </Tab>
                         <Tab eventKey="profile" title="Invite Signers">
