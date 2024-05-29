@@ -311,6 +311,7 @@ ul.mb-3.nav.nav-tabs.nav-fill button {
 }
 
 .h-100.contsetting {
+    padding: 10px;
     background: #f2f9ff;
     border: 1px solid #D3DDE7;
     border-radius: 12px;

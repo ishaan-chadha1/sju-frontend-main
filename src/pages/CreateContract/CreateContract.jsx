@@ -236,10 +236,22 @@ const CreateContract = () => {
                                 </li>
                             </ul>
 
-                            <div className="activity mt-5">
+                            {/* <div className="activity mt-5">
                                 <h4 className='mb-5'> Activity 1 - Googles</h4>
                                 <Image src='Images/esign/activity.png' className='m-auto' />
-                            </div>
+                            </div> */}
+                            <div className="h-100 contsetting">
+                                    <div className='contract-heading'>
+                                        <h2>Sender's Message</h2>
+                                        <p>Send customized message to contract recipients. this message will not be stored anywhere or encrypted.</p>
+                                    </div>
+                                    <div className='message-info'>
+                                        <div className='textarea'>
+                                            <textarea type="text" placeholder='You can use this field as a password hint, “thie password is the time we first met”,' className='message'></textarea>
+                                            <p>Character remaining : 1000</p>
+                                        </div>
+                                    </div>
+                                </div>
                         </Tab>
                         <Tab eventKey="review" title="Review and Send">
                             <div className=" mt-3 mb-4">
