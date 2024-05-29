@@ -313,3 +313,24 @@ th.actionmain {
     width: 20%;
     text-align: right;
 }
+
+
+
+.modal-body h4, .modal-body p {
+    color: #000; /* Ensure text color is black or another visible color */
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    font-size: 16px;
+}
+
+.modal-header, .modal-footer {
+    border: none; /* Remove border for a cleaner look */
+}
+
+/* Ensure the table rows have a pointer cursor */
+.table-hover {
+    cursor: pointer;
+}
+
