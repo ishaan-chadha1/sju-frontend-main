@@ -97,13 +97,13 @@ const CreateContract = () => {
                                 <p>Upload a document that you wish to send.</p>
                             </div>
                             <FileUpload />
-                            {/* <div className="box my-data">
+                            <div className="box my-data">
                                 <div className="box-content">
                                     <Image src="Images/homepage/upload.svg" />
                                     <h5>Drag & Drop</h5>
                                     <input type="file" onChange={handleFileChange} />
                                 </div>
-                            </div> */}
+                            </div>
                         </Tab>
                         <Tab eventKey="profile" title="Invite Signers">
                             <div className='invite'>
