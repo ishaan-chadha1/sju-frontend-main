@@ -1,4 +1,4 @@
-import { Col, Image, Row, Table, Modal, Button, Card, CardGroup, Tabs, Tab, Form } from 'react-bootstrap';
+import { Col, Image, Row, Table, Modal, Button, Tabs, Tab, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import './CreateContract.css';
@@ -12,6 +12,11 @@ const CreateContract = () => {
     const [showInviteModal, setShowInviteModal] = useState(false);
     const [inviteDetails, setInviteDetails] = useState({ name: '', email: '' });
     const [invitedSigners, setInvitedSigners] = useState([]);
+    const [file, setFile] = useState(null);
+    const [contractData, setContractData] = useState({
+        contractName: '',
+        message: '',
+    });
 
     const handleClose = () => setShow(false);
     const handleClose2 = () => setShow2(false);
@@ -32,6 +37,50 @@ const CreateContract = () => {
         setInviteDetails({ name: '', email: '' });
         handleCloseInviteModal();
     };
+
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+    };
+
+    const handleContractDataChange = (e) => {
+        const { name, value } = e.target;
+        setContractData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = () => {
+        // Create a FormData object
+        const data = new FormData();
+        // Append the necessary fields
+        data.append('file', file);
+        data.append('contractName', contractData.contractName);
+        data.append('message', contractData.message);
+        data.append('signers', JSON.stringify(invitedSigners));
+
+        // Log all collected data
+        console.log({
+            file,
+            ...contractData,
+            invitedSigners
+        });
+
+        // Send a POST request to the backend
+        fetch('https://upload-final-85xn.vercel.app/upload', {
+            method: 'POST',
+            body: data,
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
     return (
         <div className='main-content mt-5'>
             <div className="managecontract">
@@ -48,6 +97,13 @@ const CreateContract = () => {
                                 <p>Upload a document that you wish to send.</p>
                             </div>
                             <FileUpload />
+                            {/* <div className="box my-data">
+                                <div className="box-content">
+                                    <Image src="Images/homepage/upload.svg" />
+                                    <h5>Drag & Drop</h5>
+                                    <input type="file" onChange={handleFileChange} />
+                                </div>
+                            </div> */}
                         </Tab>
                         <Tab eventKey="profile" title="Invite Signers">
                             <div className='invite'>
@@ -169,7 +225,14 @@ const CreateContract = () => {
                                 </div>
                                 <div className='message-info'>
                                     <div className='textarea'>
-                                        <textarea type="text" placeholder='You can use this field as a password hint, “the password is the time we first met”' className='message'></textarea>
+                                        <textarea 
+                                            type="text" 
+                                            placeholder='You can use this field as a password hint, “the password is the time we first met”' 
+                                            className='message'
+                                            name="message"
+                                            value={contractData.message}
+                                            onChange={handleContractDataChange}
+                                        />
                                         <p>Character remaining: 1000</p>
                                     </div>
                                 </div>
@@ -178,21 +241,31 @@ const CreateContract = () => {
                         <Tab eventKey="review" title="Review and Send">
                             <div className=" mt-3 mb-4">
                                 <WizardForm invitedSigners={invitedSigners} />
+                                {/* <div className='contract-settings'>
+                                    <h2>Contract Settings</h2>
+                                    <input
+                                        type="text"
+                                        name="contractName"
+                                        value={contractData.contractName}
+                                        onChange={handleContractDataChange}
+                                        placeholder="Enter Contract Name"
+                                    />
+                                </div> */}
+                                <div className="d-flex justify-content-end mt-3">
+                                    <Button variant="primary" onClick={handleSubmit}>
+                                        Review and Send
+                                    </Button>
+                                </div>
                             </div>
                         </Tab>
                     </Tabs>
-
                 </div>
-
             </div>
-
 
             <Modal show={show} size="lg" dialogClassName="modal-90w" onHide={handleClose}>
                 <Modal.Header closeButton>
-
                 </Modal.Header>
                 <Modal.Body >
-
                     <div className="templetemodal">
                         <div className="modaltitle">
                             <div className="temtitle d-flex">
@@ -211,7 +284,6 @@ const CreateContract = () => {
                             <p>Being conducted by HOST, including by way of example and not limitation, any risks that many arise from negligence or carelessness on the part of the person or entities being released, frm dangerous or defective equipment or property owned, maintained, or controlled by them , or because of therir possible liability without fault. </p>
                         </div>
                     </div>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="modalfooter">
@@ -226,17 +298,14 @@ const CreateContract = () => {
 
             <Modal show={show2} dialogClassName="modal-90w" onHide={handleClose2} className='contract'>
                 <Modal.Header closeButton>
-
                 </Modal.Header>
                 <Modal.Body >
-
                     <div className="templetemodal d-block">
                         <div className="modaltitle">
                             <div className="temtitle d-block">
                                 <h4>How do you want to send the contract? </h4>
                                 <p>Choose how you want to send your contract. Generating signing links is suitable if you are collecting signatures from a number of  Signers.</p>
                             </div>
-
                         </div>
                         <ul className='usertempl'>
                             <li>
@@ -258,24 +327,18 @@ const CreateContract = () => {
                         </ul>
                         <Link to="" className='btnblue' closeButton variant="primary" onClick={handleClose2}>Continue</Link>
                     </div>
-
-
                 </Modal.Body>
-
             </Modal>
             <Modal show={show3} dialogClassName="modal-90w" onHide={handleClose3} className='contract'>
                 <Modal.Header closeButton>
-
                 </Modal.Header>
                 <Modal.Body >
-
                     <div className="templetemodal d-block">
                         <div className="modaltitle">
                             <div className="temtitle d-block">
                                 <h4>Share Contract Signing Link </h4>
                                 <p>Anyone with the link can sign the contract.</p>
                             </div>
-
                         </div>
                         <div className="copymsg">
                             <p>0xA0Ae84...F18daDD7 sent you a document to sign. open the link and input the password to sign the contract. <br></br><br></br>Contract Link :https:/app.mesprotocol.com/spot/eth-usdc</p>
@@ -286,10 +349,8 @@ const CreateContract = () => {
                         </div>
                     </div>
                 </Modal.Body>
-
             </Modal>
         </div>
-
     );
 }
 

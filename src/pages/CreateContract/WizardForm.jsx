@@ -273,9 +273,6 @@ const WizardForm = ({ invitedSigners }) => {
                                     <div className="contactname text-center pb-4">
                                         <Image src='Images/esign/notice.png' />
                                     </div>
-                                    <Button variant="primary" onClick={handleReviewAndSend}>
-                                        Review and Send
-                                    </Button>
                                 </div>
                             </Col>
                         </Row>
