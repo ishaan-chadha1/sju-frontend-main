@@ -72,6 +72,12 @@ const Sidebar = () => {
               Esign
             </Link>
           </li>
+          <li onClick={handleClick} className={activeLink === "/ManualVerification" ? "active" : ""}>
+            <Link to="/ManualVerification" onClick={() => handleItemClick("/ManualVerification")}>
+              <Image src="Images/homepage/esign.svg" />
+              Manual Verification
+            </Link>
+          </li>
           <li onClick={handleClick} className={activeLink === "/certificate" ? "active" : ""}>
             <Link to="/certificate" onClick={() => handleItemClick("/certificate")}>
               <Image src="Images/homepage/certification.svg" />

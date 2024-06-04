@@ -22,6 +22,7 @@ import Signup from "./component/Signup/Signup";
 // import Welcome from "./component/Welcome/Welcome";
 import SharedFile from "./pages/SharedFile/SharedFile";
 import './'
+import ManualVerificationPage from "./pages/ManualVerification/ManualVerificationPage";
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/createcontract" element={<CreateContract />} />
         <Route path="/Esign" element={<EsignPage />} />
         <Route path="/setting" element={<SettingPage />} />
+        <Route path="/ManualVerification" element={<ManualVerificationPage />} />
         <Route path="/certificate" element={<CertificatePage />} />
         <Route path="/choosecertificate" element={<ChooseCertificate />} />
         <Route path="/createcertificate" element={<CreateCertificate />} />
