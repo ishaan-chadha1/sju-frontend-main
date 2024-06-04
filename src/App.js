@@ -21,9 +21,9 @@ import CertificateSign from "./pages/CertificatePage/CertificateSign";
 import Signup from "./component/Signup/Signup";
 // import Welcome from "./component/Welcome/Welcome";
 import SharedFile from "./pages/SharedFile/SharedFile";
-import './'
+import './';
 import ManualVerificationPage from "./pages/ManualVerification/ManualVerificationPage";
-
+import { ContractProvider } from "./ContractContext"; // Import the ContractProvider
 
 const App = () => {
   const location = useLocation();
@@ -35,54 +35,32 @@ const App = () => {
       {isSignupOrWelcomePage ? null : <Header />}
       {isSignupOrWelcomePage ? null : <Sidebar />}
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/recentleaccess" element={<RecentlyAccessPage />} />
-        <Route path="/mydata" element={<MyData />} />
-        <Route path="/bsync" element={<BsyncPage />} />
-        <Route path="/sharedfile" element={<SharedFile />} />
-        <Route path="/trash" element={<TrashPage />} />
-        <Route path="/createcontract" element={<CreateContract />} />
-        <Route path="/Esign" element={<EsignPage />} />
-        <Route path="/setting" element={<SettingPage />} />
-        <Route path="/ManualVerification" element={<ManualVerificationPage />} />
-        <Route path="/certificate" element={<CertificatePage />} />
-        <Route path="/choosecertificate" element={<ChooseCertificate />} />
-        <Route path="/createcertificate" element={<CreateCertificate />} />
-        <Route
-          path="/createcertificatenextstep"
-          element={<CreateCertificateNextstep />}
-        />
-        <Route path="/contractrecepient" element={<ContractRecepient />} />
-        <Route path="/WizardForm" element={<WizardForm />} />
-        <Route
-          path="/RegisterOrganization"
-          element={<RegisterOrganization />}
-        />
-        <Route path="/certificatesign" element={<CertificateSign />} />
-        <Route path="/Signup" element={<Signup />} />
-        {/* <Route path="/Welcome" element={<Welcome />} /> */}
-      </Routes>
+      <ContractProvider> {/* Wrap the Routes with ContractProvider */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/recentleaccess" element={<RecentlyAccessPage />} />
+          <Route path="/mydata" element={<MyData />} />
+          <Route path="/bsync" element={<BsyncPage />} />
+          <Route path="/sharedfile" element={<SharedFile />} />
+          <Route path="/trash" element={<TrashPage />} />
+          <Route path="/createcontract" element={<CreateContract />} />
+          <Route path="/Esign" element={<EsignPage />} />
+          <Route path="/setting" element={<SettingPage />} />
+          <Route path="/ManualVerification" element={<ManualVerificationPage />} />
+          <Route path="/certificate" element={<CertificatePage />} />
+          <Route path="/choosecertificate" element={<ChooseCertificate />} />
+          <Route path="/createcertificate" element={<CreateCertificate />} />
+          <Route path="/createcertificatenextstep" element={<CreateCertificateNextstep />} />
+          <Route path="/contractrecepient" element={<ContractRecepient />} />
+          <Route path="/WizardForm" element={<WizardForm />} />
+          <Route path="/RegisterOrganization" element={<RegisterOrganization />} />
+          <Route path="/certificatesign" element={<CertificateSign />} />
+          <Route path="/Signup" element={<Signup />} />
+          {/* <Route path="/Welcome" element={<Welcome />} /> */}
+        </Routes>
+      </ContractProvider>
     </>
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

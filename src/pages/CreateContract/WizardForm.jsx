@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { Button, Form, Table, Col, Image, Row } from "react-bootstrap";
+import { useContract } from '../../ContractContext';
 import './CreateContract.css';
 
-const WizardForm = ({ invitedSigners }) => {
+const WizardForm = () => {
+    const { contractData, setContractData, invitedSigners, file } = useContract();
     const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
+        setContractData((prevData) => ({
             ...prevData,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -29,23 +25,16 @@ const WizardForm = ({ invitedSigners }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+        console.log(contractData);
     };
 
     const handleReviewAndSend = () => {
-        // Create a FormData object
         const data = new FormData();
-        // Append the necessary fields
-        data.append('contractName', 'Activity 1 - Googles');
-        data.append('creationDate', '2024-01-21 13:46:19 +0530');
-        data.append('documentKey', 'Es-FaCWab8svFN0LK4uRQs9u');
+        data.append('contractName', contractData.contractName);
+        data.append('message', contractData.message);
         data.append('signers', JSON.stringify(invitedSigners));
-        // If you need to upload a file, uncomment the next line and ensure you have a file reference
-        // data.append('file', yourFileReference);
+        data.append('file', file);
 
-        // Send a POST request to the backend
-        console.log(data);  
         fetch('YOUR_BACKEND_API_URL', {
             method: 'POST',
             body: data,
@@ -102,7 +91,14 @@ const WizardForm = ({ invitedSigners }) => {
                                         <div className='contract-name'>
                                             <h2>Contract name</h2>
                                             <p>Contract name should not exceed 200 characters.</p>
-                                            <input type="text" placeholder='Activity 1 - Googles' className='activity'></input>
+                                            <input
+                                                type="text"
+                                                name="contractName"
+                                                value={contractData.contractName}
+                                                onChange={handleChange}
+                                                placeholder='Enter Contract Name'
+                                                className='activity'
+                                            />
                                         </div>
                                         <div className='contract-encryption'>
                                             <div className='contract-flex'>
@@ -127,26 +123,6 @@ const WizardForm = ({ invitedSigners }) => {
                                                 <span><Image src='Images/homepage/eyeicon.svg' /></span>
                                             </div>
                                         </div>
-                                        <div className='contract-encryption'>
-                                            <div className='contract-flex'>
-                                                <div className='encryption-info'>
-                                                    <h2>Contract Expiration?</h2>
-                                                    <p>All recipients can only access this contract on or before :</p>
-                                                </div>
-                                                <div className='switch'>
-                                                    <div className="toggle-button-cover">
-                                                        <div className="button-cover">
-                                                            <div className="button r" id="button-1">
-                                                                <input type="checkbox" className="checkbox" />
-                                                                <div className="knobs"></div>
-                                                                <div className="layer"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>  
-                                            <input type="date" placeholder='DD/MM/YY HH:MM:SS' className='activity'></input>
-                                        </div>
                                     </div>
                                 </div>
                             </Col>
@@ -167,7 +143,14 @@ const WizardForm = ({ invitedSigners }) => {
                                         <div className='contract-name'>
                                             <h2>Contract name</h2>
                                             <p>Contract name should not exceed 200 characters.</p>
-                                            <input type="text" placeholder='Activity 1 - Googles' className='activity'></input>
+                                            <input
+                                                type="text"
+                                                name="contractName"
+                                                value={contractData.contractName}
+                                                onChange={handleChange}
+                                                placeholder='Enter Contract Name'
+                                                className='activity'
+                                            />
                                         </div>
                                         <div className='contract-encryption'>
                                             <div className='contract-flex'>
@@ -243,60 +226,61 @@ const WizardForm = ({ invitedSigners }) => {
                                     <h4>Document Details</h4>
                                     <div className="contactname">
                                         <h6>Contract name:</h6>
-                                        <span>Activity 1 - Googles</span>
+                                        <h2>{contractData.contractName}</h2>
                                     </div>
-                                    <div className="contactname">
-                                        <h6>Creation Date :</h6>
-                                        <span>2024-01-21 13:46:19 +0530</span>
+                                    <div className="contactemail">
+                                        <h6>Recipient:</h6>
+                                        <h2>John Doe</h2>
                                     </div>
-                                    <div className="contactname">
-                                        <h6>Document Key :</h6>
-                                        <span>Es-FaCWab8svFN0LK4uRQs9u</span>
+                                    <div className="contactemail">
+                                        <h6>Company Name:</h6>
+                                        <h2>Acme Corp</h2>
                                     </div>
-                                    <div className="contactname border-top-1">
-                                        <h6>Signing Activity</h6>
-                                        <div className="activename">
-                                            <span>
-                                                <i></i>
-                                            </span>
-                                            <div className="activedetail">
-                                                <h6>mfaraz568</h6>
-                                                <p>mfaraz568@gmail.com</p>
-                                            </div>
-                                        </div>
+                                    <div className="contactfile">
+                                        <h6>File Name:</h6>
+                                        <h2>{file ? file.name : 'No file uploaded'}</h2>
+                                    </div>
+                                    <div className="contactsigners">
+                                        <h6>Invited Signers:</h6>
+                                        <ul>
+                                            {invitedSigners.map((signer, index) => (
+                                                <li key={index}>{signer.name} ({signer.email})</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="contactemail">
+                                        <h6>Sender's Message:</h6>
+                                        <p>{contractData.message}</p>
                                     </div>
                                 </div>
                             </Col>
                             <Col lg={6}>
-                                <div className="docdetail">
-                                    <h4>Activity 1 - Googles</h4>
-                                    <div className="contactname text-center pb-4">
-                                        <Image src='Images/esign/notice.png' />
-                                    </div>
+                                <div className="docreview">
+                                    <h4>Review Document</h4>
+                                    <p>Please review the document carefully before submitting</p>
+                                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                                        <Form.Control as="textarea" rows={3} />
+                                    </Form.Group>
                                 </div>
                             </Col>
                         </Row>
                     </div>
                 )}
 
-                <div className='back-next mt-3 w-100'>
+                <div className="wizard-buttons">
                     {step > 1 && (
-                        <Button onClick={handlePrev} className='backbtn'>
-                            <Image src='Images/esign/backicon.svg' />  Back
+                        <Button variant="secondary" onClick={handlePrev}>
+                            Previous
                         </Button>
                     )}
-                    {step > 2 && (
-                        <Button onClick={handlePrev} className="d-none">
-                            Back
+                    {step < 3 && (
+                        <Button variant="primary" onClick={handleNext}>
+                            Next
                         </Button>
                     )}
-                    {step < 3 ? (
-                        <Button variant="primary" onClick={handleNext} className="nextbtn">
-                            Next <Image src='Images/esign/nexticon.svg' />
-                        </Button>
-                    ) : (
-                        <Button type="submit" variant="success" className="d-none">
-                            Submit
+                    {step === 3 && (
+                        <Button variant="primary" type="submit" onClick={handleReviewAndSend}>
+                            Review and Send
                         </Button>
                     )}
                 </div>

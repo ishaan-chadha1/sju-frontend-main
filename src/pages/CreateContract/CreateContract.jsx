@@ -1,30 +1,22 @@
 import { Col, Image, Row, Table, Modal, Button, Tabs, Tab, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import './CreateContract.css';
-import FileUpload from '../../component/FileUpload/FileUpload';
 import WizardForm from './WizardForm';
+import { useContract } from '../../ContractContext';
+import * as pdfjsLib from 'pdfjs-dist';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const CreateContract = () => {
-    const [show, setShow] = useState(false);
-    const [show2, setShow2] = useState(false);
-    const [show3, setShow3] = useState(false);
+    const { file, setFile, contractData, setContractData, invitedSigners, setInvitedSigners } = useContract();
     const [showInviteModal, setShowInviteModal] = useState(false);
     const [inviteDetails, setInviteDetails] = useState({ name: '', email: '' });
-    const [invitedSigners, setInvitedSigners] = useState([]);
-    const [file, setFile] = useState(null);
-    const [contractData, setContractData] = useState({
-        contractName: '',
-        message: '',
-    });
+    const pdfCanvasRef = useRef(null);
+    const [loadedPdf, setLoadedPdf] = useState(null);
 
-    const handleClose = () => setShow(false);
-    const handleClose2 = () => setShow2(false);
-    const handleClose3 = () => setShow3(false);
     const handleCloseInviteModal = () => setShowInviteModal(false);
-    const handleShow = () => setShow(true);
-    const handleShow2 = () => setShow2(true);
-    const handleShow3 = () => setShow3(true);
     const handleShowInviteModal = () => setShowInviteModal(true);
 
     const handleInviteChange = (e) => {
@@ -38,9 +30,43 @@ const CreateContract = () => {
         handleCloseInviteModal();
     };
 
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const selectedFile = event.target.files[0];
         setFile(selectedFile);
+
+        const fileReader = new FileReader();
+        fileReader.onload = async (event) => {
+            const arrayBuffer = event.target.result;
+            if (arrayBuffer instanceof ArrayBuffer) {
+                const typedArray = new Uint8Array(arrayBuffer);
+
+                const loadedPdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
+                setLoadedPdf(loadedPdf);
+                renderPage(1, loadedPdf); // Render the first page
+            }
+        };
+        fileReader.readAsArrayBuffer(selectedFile);
+    };
+
+    const renderPage = async (pageNumber, loadedPdf) => {
+        if (!loadedPdf) {
+            console.error('PDF is not loaded');
+            return;
+        }
+
+        const page = await loadedPdf.getPage(pageNumber);
+        const viewport = page.getViewport({ scale: 1.5 });
+        const canvas = pdfCanvasRef.current;
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderContext = {
+            canvasContext: context,
+            viewport: viewport
+        };
+
+        await page.render(renderContext).promise;
     };
 
     const handleContractDataChange = (e) => {
@@ -52,22 +78,18 @@ const CreateContract = () => {
     };
 
     const handleSubmit = () => {
-        // Create a FormData object
         const data = new FormData();
-        // Append the necessary fields
         data.append('file', file);
         data.append('contractName', contractData.contractName);
         data.append('message', contractData.message);
         data.append('signers', JSON.stringify(invitedSigners));
 
-        // Log all collected data
         console.log({
             file,
             ...contractData,
             invitedSigners
         });
 
-        // Send a POST request to the backend
         fetch('https://upload-final-85xn.vercel.app/upload', {
             method: 'POST',
             body: data,
@@ -86,17 +108,13 @@ const CreateContract = () => {
             <div className="managecontract">
                 <div className="contractname d-flex">
                     <Link to="/Esign"><Image src='Images/esign/leftarrow.svg'></Image></Link>
-                    <Tabs
-                        defaultActiveKey="home"
-                        id="uncontrolled-tab-example"
-                        className="mb-3"
-                    >
+                    <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
                         <Tab eventKey="home" title="Upload Contract">
                             <div className="uploadtitle">
                                 <h2>Upload Contract</h2>
                                 <p>Upload a document that you wish to send.</p>
                             </div>
-                            <FileUpload />
+                            {/* <FileUpload /> */}
                             <div className="box my-data">
                                 <div className="box-content">
                                     <Image src="Images/homepage/upload.svg" />
@@ -197,117 +215,16 @@ const CreateContract = () => {
                             </div>
                         </Tab>
                         <Tab eventKey="review" title="Review and Send">
-                            <div className=" mt-3 mb-4">
+                            <div className="mt-3 mb-4">
                                 <WizardForm invitedSigners={invitedSigners} />
-                                {/* <div className='contract-settings'>
-                                    <h2>Contract Settings</h2>
-                                    <input
-                                        type="text"
-                                        name="contractName"
-                                        value={contractData.contractName}
-                                        onChange={handleContractDataChange}
-                                        placeholder="Enter Contract Name"
-                                    />
-                                </div> */}
-                                <div className="d-flex justify-content-end mt-3">
-                                    <Button variant="primary" onClick={handleSubmit}>
-                                        Review and Send
-                                    </Button>
-                                </div>
+                            </div>
+                            <div className="pdf-preview mt-3">
+                                <canvas ref={pdfCanvasRef} style={{ width: '100%', border: '1px solid #ccc' }}></canvas>
                             </div>
                         </Tab>
                     </Tabs>
                 </div>
             </div>
-
-            <Modal show={show} size="lg" dialogClassName="modal-90w" onHide={handleClose}>
-                <Modal.Header closeButton>
-                </Modal.Header>
-                <Modal.Body >
-                    <div className="templetemodal">
-                        <div className="modaltitle">
-                            <div className="temtitle d-flex">
-                                <h4>Non-Disclosure Agreement <Image src='Images/esign/invoiceicon.svg' className='ml-2' /> </h4>
-                                <Link to="/" className=''>waiver and release of liability</Link>
-                            </div>
-                            <p>this is template of waiver and release of liability.</p>
-                        </div>
-                        <Link to="" className='btnblue'>use this Template</Link>
-                    </div>
-                    <div className="contractmodalbody">
-                        <div className="bgwhite">
-                            <h5>General Release Of Liability Form</h5>
-                            <p>i, HEREBY ASSUME ALL OF THE RISKS OF PARTICIPATING IN ANA/ALL ACTIVITIES</p>
-                            <p>Being conducted by HOST, including by way of example and not limitation, any risks that many arise from negligence or carelessness on the part of the person or entities being released, frm dangerous or defective equipment or property owned, maintained, or controlled by them , or because of therir possible liability without fault. </p>
-                            <p>Being conducted by HOST, including by way of example and not limitation, any risks that many arise from negligence or carelessness on the part of the person or entities being released, frm dangerous or defective equipment or property owned, maintained, or controlled by them , or because of therir possible liability without fault. </p>
-                        </div>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="modalfooter">
-                        <ul className='modalcontent'>
-                            <li><span> Contract Type : </span> Intellectual Property</li>
-                            <li><span>Applicable jurisdictions :</span> Worldwide</li>
-                            <li><span>Created By :</span> EthSign</li>
-                        </ul>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-            <Modal show={show2} dialogClassName="modal-90w" onHide={handleClose2} className='contract'>
-                <Modal.Header closeButton>
-                </Modal.Header>
-                <Modal.Body >
-                    <div className="templetemodal d-block">
-                        <div className="modaltitle">
-                            <div className="temtitle d-block">
-                                <h4>How do you want to send the contract? </h4>
-                                <p>Choose how you want to send your contract. Generating signing links is suitable if you are collecting signatures from a number of  Signers.</p>
-                            </div>
-                        </div>
-                        <ul className='usertempl'>
-                            <li>
-                                <input type="radio" className='userinviteradio' name='userinviteradio' checked />
-                                <div className="userinvite">
-                                    <Image src='Images/homepage/inviteuser.svg'></Image>
-                                    <h4>Invite Signers</h4>
-                                    <p>Fundraising contracts, employment contracts, etc..</p>
-                                </div>
-                            </li>
-                            <li>
-                                <input type="radio" className='userinviteradio' name='userinviteradio' />
-                                <div className="userinvite">
-                                    <Image src='Images/homepage/genratelink.svg'></Image>
-                                    <h4>generate Signing Links</h4>
-                                    <p>NDAs, terms of services, payments, DAO member agreements, etc.</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <Link to="" className='btnblue' closeButton variant="primary" onClick={handleClose2}>Continue</Link>
-                    </div>
-                </Modal.Body>
-            </Modal>
-            <Modal show={show3} dialogClassName="modal-90w" onHide={handleClose3} className='contract'>
-                <Modal.Header closeButton>
-                </Modal.Header>
-                <Modal.Body >
-                    <div className="templetemodal d-block">
-                        <div className="modaltitle">
-                            <div className="temtitle d-block">
-                                <h4>Share Contract Signing Link </h4>
-                                <p>Anyone with the link can sign the contract.</p>
-                            </div>
-                        </div>
-                        <div className="copymsg">
-                            <p>0xA0Ae84...F18daDD7 sent you a document to sign. open the link and input the password to sign the contract. <br></br><br></br>Contract Link :https:/app.mesprotocol.com/spot/eth-usdc</p>
-                            <div className="copybutton">
-                                <Link to="" className='btn-white'><Image src='Images/homepage/copy.svg' /> Copy Message</Link>
-                                <Link to="" className='btn-blue'>Share With Email</Link>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
         </div>
     );
 }

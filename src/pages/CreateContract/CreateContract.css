@@ -431,7 +431,7 @@ table.folders-table-1 td {
 }
 
 .docdetail {
-    background: #F2F9FF;
+    color: black;
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid #0022443b;
@@ -488,9 +488,55 @@ table.folders-table-1 td {
     margin-top: 25px;
 }
 
-.docdetail {
-    height: 100%;
+/* CreateContract.css */
+
+.docdetail h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
+
+.contactname, .contactemail, .contactfile, .contactsigners {
+    margin-bottom: 1rem;
+}
+
+.contactname h6, .contactemail h6, .contactfile h6, .contactsigners h6 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.contactname h2, .contactemail h2, .contactfile h2, .contactsigners ul {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #000;
+}
+
+.contactsigners ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contactsigners ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.wizard-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.wizard-buttons .btn {
+    width: 150px;
+}
+
+.pdf-preview canvas {
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
 
 
 row.contract-tables {
@@ -958,4 +1004,62 @@ ul.usertempl+a {
 .copybutton .btn-blue {
     background: #0061C0;
     color: white;
+}
+
+.docdetail h4 {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    font-weight: bold;
+}
+
+.contactname, .contactemail, .contactfile, .contactsigners {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.contactname h6, .contactemail h6, .contactfile h6, .contactsigners h6 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.contactname h2, .contactemail h2, .contactfile h2, .contactsigners ul {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.contactsigners ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contactsigners ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.wizard-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.wizard-buttons .btn {
+    width: 150px;
+}
+
+.contsetting {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.contract-info .contract-name, .contract-encryption, .setting-password, .contactname, .contactemail, .contactfile, .contactsigners, .contactmessage {
+    margin-bottom: 20px;
+}
+
+.contract-encryption .contract-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
