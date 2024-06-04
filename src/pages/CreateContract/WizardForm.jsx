@@ -53,21 +53,7 @@ const WizardForm = () => {
             <Form onSubmit={handleSubmit}>
                 {step === 1 && (
                     <div>
-                        <div className='invite'>
-                            <h2>Contract Recipients</h2>
-                            <p>Review your signers and viewers</p>
-                        </div>
-
                         <Table className="folders-table-1" responsive>
-                            <thead>
-                                <tr className="table-heading">
-                                    <th>Name</th>
-                                    <th>Email Address</th>
-                                    <th>Telegram</th>
-                                    <th>Wallet Address</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 {invitedSigners.map((signer, index) => (
                                     <tr key={index}>
@@ -214,12 +200,6 @@ const WizardForm = () => {
                 )}
                 {step === 3 && (
                     <div>
-                        <div className="selectfilter mt-3 mb-4">
-                            <div className="search">
-                                <span><Image src='Images/search.svg' /></span>
-                                <input type="search" placeholder='Search Document' />
-                            </div>
-                        </div>
                         <Row>
                             <Col lg={6}>
                                 <div className="docdetail">
@@ -252,15 +232,6 @@ const WizardForm = () => {
                                         <h6>Sender's Message:</h6>
                                         <p>{contractData.message}</p>
                                     </div>
-                                </div>
-                            </Col>
-                            <Col lg={6}>
-                                <div className="docreview">
-                                    <h4>Review Document</h4>
-                                    <p>Please review the document carefully before submitting</p>
-                                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                                        <Form.Control as="textarea" rows={3} />
-                                    </Form.Group>
                                 </div>
                             </Col>
                         </Row>

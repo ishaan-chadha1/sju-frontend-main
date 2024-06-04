@@ -213,7 +213,7 @@ const CreateContract = () => {
                                 <WizardForm invitedSigners={invitedSigners} />
                             </div>
                             <div className="pdf-preview mt-3">
-                                <canvas ref={pdfCanvasRef} style={{ width: '100%', border: '1px solid #ccc' }}></canvas>
+                                <canvas ref={pdfCanvasRef} style={{ width: '50%', border: '1px solid #ccc' }}></canvas>
                             </div>
                         </Tab>
                     </Tabs>
