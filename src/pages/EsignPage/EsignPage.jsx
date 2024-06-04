@@ -45,7 +45,7 @@ const EsignPage = () => {
                 <Image src='Images/esign/pendingicon.svg' />
                 <p>Sent contract file will be immediately encrypted for secure transmission. Eth sign will have no access to the contract’s and it will be stored on-chain after all signers have completed signatures.</p>
             </div>
-            <FileUpload />
+            {/* <FileUpload /> */}
             <Table className="folders-table-1 mt-5" responsive>
                 <thead>
                     <tr className="table-heading">

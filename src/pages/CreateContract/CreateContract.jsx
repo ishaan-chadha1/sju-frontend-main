@@ -119,8 +119,6 @@ const CreateContract = () => {
                                     <tr className="table-heading">
                                         <th>Name</th>
                                         <th>Email Address</th>
-                                        <th>Telegram</th>
-                                        <th>Wallet Address</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -129,8 +127,6 @@ const CreateContract = () => {
                                         <tr key={index}>
                                             <td className='center'>{signer.name}</td>
                                             <td className='center'>{signer.email}</td>
-                                            <td className='center'>Add telegram handle</td>
-                                            <td className='center'>Add wallet address</td>
                                             <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
                                         </tr>
                                     ))}
@@ -175,49 +171,11 @@ const CreateContract = () => {
                                 </Modal.Footer>
                             </Modal>
                         </Tab>
-                        <Tab eventKey="contact" title="Add Fields">
-                            <div className="selectfilter mt-3">
-                                <h4>Add Fields</h4>
-                                <div className="search">
-                                    <span><Image src='Images/search.svg' /></span>
-                                    <input type="search" placeholder='Search Document' />
-                                </div>
+                        <Tab eventKey="contact" title="Add A Note">
+                            <div className="selectfilter mt-3 mb-5">
+                                <h4>Add A Note</h4>
                             </div>
-                            <ul className='assignfield'>
-                                <li>
-                                    <div className="assignfieldsub">
-                                        <span> <Image src='Images/esign/assignicon.png' /></span>
-                                        <Image src='Images/esign/user.svg' />
-                                        <p>mfaraz568</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="assignfieldsub">
-                                        <span> <Image src='Images/esign/required.png' /></span>
-                                        <Image src='Images/esign/pencil.svg' />
-                                        <p>Signature Field</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="assignfieldsub">
-                                        <Image src='Images/esign/date.svg' />
-                                        <p>Date Signed</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="assignfieldsub">
-                                        <Image src='Images/esign/input.svg' />
-                                        <p>Input Text Field</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="assignfieldsub">
-                                        <Image src='Images/esign/readonly.svg' />
-                                        <p>Read Only Text</p>
-                                    </div>
-                                </li>
-                            </ul>
-
+                            
                             <div className="h-100 contsetting">
                                 <div className='contract-heading'>
                                     <h2>Sender's Message</h2>
