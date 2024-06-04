@@ -6,6 +6,7 @@ import WizardForm from './WizardForm';
 import { useContract } from '../../ContractContext';
 import * as pdfjsLib from 'pdfjs-dist';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+import FileUpload from '../../component/FileUpload/FileUpload';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
@@ -110,18 +111,11 @@ const CreateContract = () => {
                     <Link to="/Esign"><Image src='Images/esign/leftarrow.svg'></Image></Link>
                     <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
                         <Tab eventKey="home" title="Upload Contract">
-                            <div className="uploadtitle">
-                                <h2>Upload Contract</h2>
-                                <p>Upload a document that you wish to send.</p>
-                            </div>
-                            {/* <FileUpload /> */}
-                            <div className="box my-data">
-                                <div className="box-content">
-                                    <Image src="Images/homepage/upload.svg" />
-                                    <h5>Drag & Drop</h5>
-                                    <input type="file" onChange={handleFileChange} />
+                                <div className="uploadtitle">
+                                    <h2>Upload Contract</h2>
+                                    <p>Upload a document that you wish to send.</p>
                                 </div>
-                            </div>
+                                <FileUpload onFileChange={handleFileChange} />
                         </Tab>
                         <Tab eventKey="profile" title="Invite Signers">
                             <div className='invite'>

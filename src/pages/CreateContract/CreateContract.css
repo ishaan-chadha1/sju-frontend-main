@@ -30,10 +30,12 @@
     color: #002244;
     font-size: 20px;
     margin-bottom: 9px;
+    
 }
 
 .uploadtitle p {
     color: #0022448a;
+    padding-bottom:1rem;
 }
 
 
