@@ -53,19 +53,17 @@ const WizardForm = () => {
             <Form onSubmit={handleSubmit}>
                 {step === 1 && (
                     <div>
-                        <Table className="folders-table-1" responsive>
+                        {/* <Table className="folders-table-1" responsive>
                             <tbody>
                                 {invitedSigners.map((signer, index) => (
                                     <tr key={index}>
                                         <td className='center'>{signer.name}</td>
-                                        <td className='center'>{signer.email}</td>
-                                        <td className='center'>Add telegram handle</td>
-                                        <td className='center'>Add wallet address</td>
+                                        <td className='center'>{signer.email}</td>\
                                         <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
                                     </tr>
                                 ))}
                             </tbody>
-                        </Table>
+                        </Table> */}
                         <Row className='contract-tables mt-5'>
                             <Col lg={6}>
                                 <div className="h-100 contsetting">
