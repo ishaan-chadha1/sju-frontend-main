@@ -161,7 +161,7 @@ const CreateContract = () => {
                                                 placeholder="Enter signer's name"
                                             />
                                         </Form.Group>
-                                        <Form.Group controlId="inviteEmail">
+                                        <Form.Group style={{paddingTop:'10px'}} controlId="inviteEmail">
                                             <Form.Label>Email address</Form.Label>
                                             <Form.Control
                                                 type="email"
