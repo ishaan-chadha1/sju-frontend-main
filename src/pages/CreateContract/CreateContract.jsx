@@ -17,6 +17,10 @@ const CreateContract = () => {
     const pdfCanvasRef = useRef(null);
     const [loadedPdf, setLoadedPdf] = useState(null);
 
+    const handleDeleteSigner = (index) => {
+        const newSigners = invitedSigners.filter((_, i) => i !== index);
+        setInvitedSigners(newSigners);
+    };
     const handleCloseInviteModal = () => setShowInviteModal(false);
     const handleShowInviteModal = () => setShowInviteModal(true);
 
@@ -139,7 +143,11 @@ const CreateContract = () => {
                                         <tr key={index}>
                                             <td className='center'>{signer.name}</td>
                                             <td className='center'>{signer.email}</td>
-                                            <td className='center'><Image src='Images/esign/actionicon.svg' /></td>
+                                            <td className='center'><Image 
+                                                    src='Images/esign/actionicon.svg' 
+                                                    onClick={() => handleDeleteSigner(index)} 
+                                                    style={{cursor: 'pointer'}}
+                                                /></td>
                                         </tr>
                                     ))}
                                 </tbody>
