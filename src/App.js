@@ -24,6 +24,7 @@ import SharedFile from "./pages/SharedFile/SharedFile";
 import './';
 import ManualVerificationPage from "./pages/ManualVerification/ManualVerificationPage";
 import { ContractProvider } from "./ContractContext"; // Import the ContractProvider
+import Signing from "./pages/CreateContract/Signing";
 
 const App = () => {
   const location = useLocation();
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/sharedfile" element={<SharedFile />} />
           <Route path="/trash" element={<TrashPage />} />
           <Route path="/createcontract" element={<CreateContract />} />
+          <Route path="/signing" element={<Signing />} />
           <Route path="/Esign" element={<EsignPage />} />
           <Route path="/setting" element={<SettingPage />} />
           <Route path="/ManualVerification" element={<ManualVerificationPage />} />

@@ -190,7 +190,7 @@ const CreateContract = () => {
                                     </Button>
                                 </Modal.Footer>
                             </Modal>
-                        </Tab>
+                        </Tab>                        
                         <Tab eventKey="contact" title="Add A Note">
                             <div className="selectfilter mt-3 mb-5">
                                 <h4>Add A Note</h4>
