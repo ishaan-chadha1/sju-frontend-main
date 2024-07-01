@@ -155,25 +155,31 @@ const Signing = () => {
           pages.push(i)
         }
         setPdfPages(pages)
-
         // Render each page onto its respective canvas
         pages.forEach((pageNumber) => {
           pdf.getPage(pageNumber).then((page) => {
-            const viewport = page.getViewport({ scale: 1.5 }) // Adjust scale as needed
-            const canvas = document.getElementById(`canvas-${pageNumber}`)
-            const context = canvas.getContext("2d")
-            canvas.width = viewport.width
-            canvas.height = viewport.height
-
-            const renderContext = {
-              canvasContext: context,
-              viewport: viewport,
-            }
-
-            page.render(renderContext)
-          })
-        })
-      })
+            const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale as needed
+  
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                const canvas = document.getElementById(`canvas-${pageNumber}`);
+                if (canvas) {
+                  const context = canvas.getContext("2d");
+                  canvas.width = viewport.width;
+                  canvas.height = viewport.height;
+        
+                  const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                  };
+        
+                  page.render(renderContext);
+                }
+              }, 2000);
+            });
+          });
+        });
+      })
     }
     fileReader.readAsArrayBuffer(file)
   }
