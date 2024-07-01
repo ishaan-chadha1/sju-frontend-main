@@ -114,7 +114,7 @@ function dragElement(elmnt) {
   }
 }
 
-const CreateContract = () => {
+const Signing = () => {
     
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(false)
